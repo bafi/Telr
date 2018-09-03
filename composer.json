@@ -1,20 +1,35 @@
 {
-    "name": "payment/telr",
-    "description": "Pay online through telr for online payment",
+    "name": "laravel_payment/telr",
+    "description": "Pay online through telr payment gateway",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "payment",
+        "telr payment",
+        "telr"
+    ],
     "authors": [
         {
             "name": "Moustafa Gouda",
             "email": "mgouda@arkdev.net"
         }
     ],
-    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "TelrGateway\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "payment\\telr\\TelrServiceProvider"
+                "TelrGateway\\TelrServiceProvider"
             ]
         }
     },
-    "license": "GPL",
-    "minimum-stability": "dev"
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan vendor:publish --provider=\"payment\\telr\\TelrServiceProvider\""
+        ]
+    }
 }

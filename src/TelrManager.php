@@ -1,14 +1,14 @@
 <?php
 
-namespace payment\telr;
+namespace TelrGateway;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
-use payment\telr\Events\TelrCreateRequestEvent;
-use payment\telr\Events\TelrFailedTransactionEvent;
-use payment\telr\Events\TelrRecieveTransactionResponseEvent;
-use payment\telr\Events\TelrSuccessTransactionEvent;
+use TelrGateway\Events\TelrCreateRequestEvent;
+use TelrGateway\Events\TelrFailedTransactionEvent;
+use TelrGateway\Events\TelrRecieveTransactionResponseEvent;
+use TelrGateway\Events\TelrSuccessTransactionEvent;
 
 class TelrManager
 {
@@ -19,7 +19,7 @@ class TelrManager
      * @param $amount
      * @param $description
      * @param array $billingParams
-     * @return \payment\telr\CreateTelrRequest
+     * @return \TelrGateway\CreateTelrRequest
      */
     public function prepareCreateRequest($orderId, $amount, $description, array $billingParams = [])
     {
@@ -43,7 +43,7 @@ class TelrManager
      * @param $amount
      * @param $description
      * @param array $billingParams
-     * @return \payment\telr\TelrURL
+     * @return \TelrGateway\TelrURL
      * @throws \Exception
      */
     public function pay($orderId, $amount, $description, array $billingParams = [])
@@ -53,7 +53,7 @@ class TelrManager
 
         // Validate if response has error messages
         if (isset($result->error)) {
-            throw new \Exception($result->error->message.'. Note: '.$result->error->note);
+            throw new \Exception($result->error->message.'. Note: '.$result->error->message);
         }
         // Dispatch event
         event(new TelrCreateRequestEvent($createRequest, $result));
@@ -65,7 +65,7 @@ class TelrManager
      * Fetch the transaction result
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Database\Eloquent\ModelNotFoundException|Transaction|void
+     * @return \Illuminate\Database\Eloquent\ModelNotFoundException|Transaction
      * @throws \Exception
      */
     public function handleTransactionResponse(Request $request)
@@ -91,7 +91,7 @@ class TelrManager
             // Dispatch success transaction
             event(new TelrSuccessTransactionEvent($transaction, $result));
 
-            return;
+            return $transaction;
         }
 
         // Mark the transaction as failed

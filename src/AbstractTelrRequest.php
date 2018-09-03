@@ -1,6 +1,6 @@
 <?php
 
-namespace payment\telr;
+namespace TelrGateway;
 
 Abstract class AbstractTelrRequest
 {

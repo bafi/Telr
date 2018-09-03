@@ -1,21 +1,21 @@
 <?php
 
-namespace payment\telr\Listeners;
+namespace TelrGateway\Listeners;
 
-use payment\telr\Events\TelrCreateRequestEvent;
-use payment\telr\Transaction;
+use TelrGateway\Events\TelrCreateRequestEvent;
+use TelrGateway\Transaction;
 
 class CreateTransactionListener
 {
     /**
-     * @var \payment\telr\Transaction
+     * @var \TelrGateway\Transaction
      */
     protected $model;
 
     /**
      * CreateTransactionListener constructor.
      *
-     * @param \payment\telr\Transaction $model
+     * @param \TelrGateway\Transaction $model
      */
     public function __construct(Transaction $model)
     {
