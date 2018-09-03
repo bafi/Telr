@@ -1,6 +1,13 @@
 {
-    "name": "payment/telr",
-    "description": "Pay online through telr for online payment",
+    "name": "laravel_payment/telr",
+    "description": "Pay online through telr payment gateway",
+    "license": "GPL",
+    "keywords": [
+        "laravel",
+        "payment",
+        "telr payment",
+        "telr"
+    ],
     "authors": [
         {
             "name": "Moustafa Gouda",
@@ -15,6 +22,9 @@
             ]
         }
     },
-    "license": "GPL",
-    "minimum-stability": "dev"
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan vendor:publish --provider=\"payment\\telr\\TelrServiceProvider\""
+        ]
+    }
 }
