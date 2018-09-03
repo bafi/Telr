@@ -1,0 +1,20 @@
+{
+    "name": "payment/telr",
+    "description": "Pay online through telr for online payment",
+    "authors": [
+        {
+            "name": "Moustafa Gouda",
+            "email": "mgouda@arkdev.net"
+        }
+    ],
+    "type": "library",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "payment\\telr\\TelrServiceProvider"
+            ]
+        }
+    },
+    "license": "GPL",
+    "minimum-stability": "dev"
+}
