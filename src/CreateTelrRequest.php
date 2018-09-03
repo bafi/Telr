@@ -1,6 +1,6 @@
 <?php
 
-namespace payment\telr;
+namespace TelrGateway;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Ramsey\Uuid\Uuid;

@@ -5,23 +5,23 @@
 You can install the package via composer:
 
 ``` bash
-composer require payment/telr
+composer require laravel_payment/telr
 ```
 
 
-In Laravel 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
+In Laravel starting from 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
 
 ```php
 'providers' => [
     // ...
-    payment\telr\TelrServiceProvider::class,
+    TelrGateway\TelrServiceProvider::class,
 ];
 ```
 
 You can publish using the following provider
 
 ```bash
-php artisan vendor:publish --provider="payment\telr\TelrServiceProvider"
+php artisan vendor:publish --provider="TelrGateway\TelrServiceProvider"
 ```
 After that you can create the telr transaction table by running the migrations command:
 
@@ -63,7 +63,7 @@ return [
 After creating the route place the following code to redirect to bank page
 
 ```php
-$telrManager = new \payment\telr\TelrManager();
+$telrManager = new \TelrGateway\TelrManager();
 
 $billingParams = [
         'first_name' => 'Moustafa Gouda',
@@ -84,6 +84,6 @@ return $telrManager->pay('ORDER_ID_GOES_HERE', 'TOTAL_AMOUNT', 'DESCRIPTION ...'
 
 And on telr callback **(Success|Cancel|Declined)** to handle response put the following code:
 ```php
-$telrManager = new \payment\telr\TelrManager();
+$telrManager = new \TelrGateway\TelrManager();
 $telrManager->handleTransactionResponse($request);
 ```

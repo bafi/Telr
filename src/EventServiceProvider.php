@@ -1,12 +1,12 @@
 <?php
 
-namespace payment\telr;
+namespace TelrGateway;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use payment\telr\Events\TelrCreateRequestEvent;
-use payment\telr\Events\TelrRecieveTransactionResponseEvent;
-use payment\telr\Listeners\CreateTransactionListener;
-use payment\telr\Listeners\SaveTransactionResponseListener;
+use TelrGateway\Events\TelrCreateRequestEvent;
+use TelrGateway\Events\TelrRecieveTransactionResponseEvent;
+use TelrGateway\Listeners\CreateTransactionListener;
+use TelrGateway\Listeners\SaveTransactionResponseListener;
 
 class EventServiceProvider extends ServiceProvider
 {
