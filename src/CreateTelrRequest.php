@@ -344,6 +344,29 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
     }
 
     /**
+     * Set billing lang
+     *
+     * @param $lang
+     * @return $this
+     */
+    public function setBillingLang($lang)
+    {
+        $this->data['ivp_lang'] = $lang;
+
+        return $this;
+    }
+
+    /**
+     * Get billing lang
+     *
+     * @return string|null
+     */
+    public function getBillingLang()
+    {
+        return data_get($this->data, 'ivp_lang', null);
+    }
+
+    /**
      * Append order id to URL
      *
      * @param $url
@@ -374,6 +397,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
             'ivp_amount' => $this->getAmount(),
             'ivp_currency' => $this->getCurrency(),
             'ivp_desc' => $this->getDesc(),
+            'ivp_lang' => $this->getBillingLang(),
             'return_auth' => $this->getSuccessURL(),
             'return_can' => $this->getCancelURL(),
             'return_decl' => $this->getDeclinedURL(),
