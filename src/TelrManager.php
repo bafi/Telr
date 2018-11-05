@@ -25,6 +25,9 @@ class TelrManager
     {
         $createTelrRequest = (new CreateTelrRequest($orderId, $amount))->setDesc($description);
 
+        //Set Telr request lang
+        $createTelrRequest->setLangCode(app()->getLocale());
+
         // Associate billing params to fields
         foreach ($billingParams as $key => $value) {
             $methodName = ('setBilling'.studly_case($key));
