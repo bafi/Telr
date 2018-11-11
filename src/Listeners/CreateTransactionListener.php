@@ -49,6 +49,7 @@ class CreateTransactionListener
             'billing_zip' => $event->telrRequest->getBillingZip(),
             'billing_country' => $event->telrRequest->getBillingCountry(),
             'billing_email' => $event->telrRequest->getBillingEmail(),
+            'lang_code' => $event->telrRequest->getLangCode(),
             'trx_reference' => $event->response->order->ref,
         ]);
     }

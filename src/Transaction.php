@@ -53,6 +53,7 @@ class Transaction extends Model
         'billing_zip',
         'billing_country',
         'billing_email',
+        'lang_code',
         'trx_reference',
         'approved',
         'response',

@@ -32,6 +32,7 @@ class CreateTelrTransactionsTable extends Migration
             $table->string('billing_zip')->nullable()->comment = 'Billing zip';
             $table->string('billing_country')->nullable()->comment = 'Billing country';
             $table->string('billing_email')->nullable()->comment = 'Billing email';
+            $table->string('lang_code')->nullable()->comment = 'Transaction Request lang';
             $table->string('trx_reference')->nullable()->comment = 'The transaction reference';
             $table->boolean('approved')->nullable()->comment = 'The transaction status is approved or failed';
             $table->json('response')->nullable()->comment = 'The transaction response';
