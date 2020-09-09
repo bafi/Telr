@@ -4,6 +4,8 @@ namespace TelrGateway;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Ramsey\Uuid\Uuid;
+use Arr;
+use Str;
 
 class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
 {
@@ -101,7 +103,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
      */
     public function getDesc()
     {
-        return array_has($this->data, 'ivp_desc') ? str_limit($this->data['ivp_desc'], 60, '...') : null;
+        return Arr::has($this->data, 'ivp_desc') ? Str::limit($this->data['ivp_desc'], 60, '...') : null;
     }
 
     /**

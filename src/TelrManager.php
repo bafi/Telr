@@ -9,6 +9,7 @@ use TelrGateway\Events\TelrCreateRequestEvent;
 use TelrGateway\Events\TelrFailedTransactionEvent;
 use TelrGateway\Events\TelrRecieveTransactionResponseEvent;
 use TelrGateway\Events\TelrSuccessTransactionEvent;
+use Str;
 
 class TelrManager
 {
@@ -30,7 +31,7 @@ class TelrManager
 
         // Associate billing params to fields
         foreach ($billingParams as $key => $value) {
-            $methodName = ('setBilling'.studly_case($key));
+            $methodName = ('setBilling'.Str::studly($key));
             if (method_exists($createTelrRequest, $methodName)) {
                 $createTelrRequest->$methodName($value);
             }
