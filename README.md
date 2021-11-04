@@ -75,6 +75,7 @@ $billingParams = [
         'zip' => '11231',
         'country' => 'EG',
         'email' => 'example@company.com',
+        'phone' => '+966000000000',
         'custref' => 'user_id_1234' // The user's unique system ID to remember his card
     ];
 

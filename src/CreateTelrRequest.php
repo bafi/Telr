@@ -387,6 +387,24 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
     }
 
     /**
+     * @return mixed
+     */
+    public function getBillingPhone()
+    {
+        return data_get($this->data, 'bill_phone', null);
+    }
+
+    /**
+     * @param $phone
+     * @return $this
+     */
+    public function setBillingPhone($phone)
+    {
+        $this->data['bill_phone'] = $phone;
+
+        return $this;
+    }
+    /**
      * Append order id to URL
      *
      * @param $url
@@ -431,6 +449,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
             'bill_country' => $this->getBillingCountry(),
             'bill_email' => $this->getBillingEmail(),
             'bill_custref' => $this->getBillingCustref(),
-            ];
+            'bill_phone' => $this->getBillingPhone(),
+        ];
     }
 }
