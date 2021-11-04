@@ -369,6 +369,24 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
     }
 
     /**
+     * @return mixed
+     */
+    public function getBillingCustref()
+    {
+        return data_get($this->data, 'bill_custref', null);
+    }
+
+    /**
+     * @param $email
+     * @return $this
+     */
+    public function setBillingCustref($custref)
+    {
+        $this->data['bill_custref'] = $custref;
+        return $this;
+    }
+
+    /**
      * Append order id to URL
      *
      * @param $url
@@ -412,6 +430,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
             'bill_zip' => $this->getBillingZip(),
             'bill_country' => $this->getBillingCountry(),
             'bill_email' => $this->getBillingEmail(),
-        ];
+            'bill_custref' => $this->getBillingCustref(),
+            ];
     }
 }
