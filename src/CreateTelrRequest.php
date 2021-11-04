@@ -377,7 +377,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
     }
 
     /**
-     * @param $email
+     * @param $custref
      * @return $this
      */
     public function setBillingCustref($custref)
