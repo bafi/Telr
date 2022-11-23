@@ -4,8 +4,8 @@ namespace TelrGateway;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Ramsey\Uuid\Uuid;
-use Arr;
-use Str;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
 {
@@ -19,7 +19,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
     {
         $this->setOrderId($orderId);
         $this->setAmount($amount);
-        $this->setCartId(Uuid::uuid4()->toString().'-'.time());
+        $this->setCartId(Uuid::uuid4()->toString() . '-' . time());
     }
 
     /**
@@ -380,8 +380,22 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
         $url = url($url);
         $query = parse_url($url, PHP_URL_QUERY);
 
-        return $url .= ($query ? '&' : '?')."cart_id={$orderId}";
+        return $url .= ($query ? '&' : '?') . "cart_id={$orderId}";
     }
+
+
+    public function setBillingPhone($phone)
+    {
+        $this->data['bill_phone'] = $phone;
+
+        return $this;
+    }
+
+    public function getBillingPhone()
+    {
+        return data_get($this->data, 'bill_phone', null);
+    }
+
 
     /**
      * Get the instance as an array.
@@ -409,6 +423,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
             'bill_addr2' => $this->getBillingAddress2(),
             'bill_city' => $this->getBillingCity(),
             'bill_region' => $this->getBillingRegion(),
+            'bill_phone' => $this->getBillingPhone(),
             'bill_zip' => $this->getBillingZip(),
             'bill_country' => $this->getBillingCountry(),
             'bill_email' => $this->getBillingEmail(),

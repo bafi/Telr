@@ -9,7 +9,7 @@ use TelrGateway\Events\TelrCreateRequestEvent;
 use TelrGateway\Events\TelrFailedTransactionEvent;
 use TelrGateway\Events\TelrRecieveTransactionResponseEvent;
 use TelrGateway\Events\TelrSuccessTransactionEvent;
-use Str;
+use Illuminate\Support\Str;
 
 class TelrManager
 {
