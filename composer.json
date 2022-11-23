@@ -1,12 +1,10 @@
 {
-    "name": "payment/telr",
-    "description": "telr payment package",
+    "name": "telr_payment/telr",
+    "description": "telr payment package to laravel",
     "type": "library",
-    "require": {
-    },
     "autoload": {
         "psr-4": {
-            "Payment\\Telr\\": "src/"
+            "TelrPayment\\Telr\\": "src/"
         }
     },
     "authors": [
@@ -14,5 +12,7 @@
             "name": "mubarakismail",
             "email": "mubarakismail202@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability": "dev",
+    "require": {}
 }
