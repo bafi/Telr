@@ -1,8 +1,8 @@
 <?php
 
-namespace TelrGateway\Events;
+namespace Mubarakismail\TelrPayment\Events;
 
-use TelrGateway\CreateTelrRequest;
+use Mubarakismail\TelrPayment\CreateTelrRequest;
 
 class TelrCreateRequestEvent
 {
@@ -19,7 +19,7 @@ class TelrCreateRequestEvent
     /**
      * CreateRequestEvent constructor.
      *
-     * @param \TelrGateway\CreateTelrRequest $request
+     * @param \Mubarakismail\TelrPayment\CreateTelrRequest $request
      * @param \stdClass $response
      */
     public function __construct(CreateTelrRequest $request, \stdClass $response)

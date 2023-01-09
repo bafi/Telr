@@ -1,8 +1,8 @@
 <?php
 
-namespace TelrGateway\Events;
+namespace Mubarakismail\TelrPayment\Events;
 
-use TelrGateway\Transaction;
+use Mubarakismail\TelrPayment\Transaction;
 
 class TelrFailedTransactionEvent
 {

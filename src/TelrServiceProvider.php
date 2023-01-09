@@ -1,6 +1,6 @@
 <?php
 
-namespace TelrGateway;
+namespace Mubarakismail\TelrPayment;
 
 use Illuminate\Support\ServiceProvider;
 

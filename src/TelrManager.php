@@ -1,14 +1,14 @@
 <?php
 
-namespace TelrGateway;
+namespace Mubarakismail\TelrPayment;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
-use TelrGateway\Events\TelrCreateRequestEvent;
-use TelrGateway\Events\TelrFailedTransactionEvent;
-use TelrGateway\Events\TelrRecieveTransactionResponseEvent;
-use TelrGateway\Events\TelrSuccessTransactionEvent;
+use Mubarakismail\TelrPayment\Events\TelrCreateRequestEvent;
+use Mubarakismail\TelrPayment\Events\TelrFailedTransactionEvent;
+use Mubarakismail\TelrPayment\Events\TelrRecieveTransactionResponseEvent;
+use Mubarakismail\TelrPayment\Events\TelrSuccessTransactionEvent;
 use Str;
 
 class TelrManager
@@ -20,7 +20,7 @@ class TelrManager
      * @param $amount
      * @param $description
      * @param array $billingParams
-     * @return \TelrGateway\CreateTelrRequest
+     * @return \Mubarakismail\TelrPayment\CreateTelrRequest
      */
     public function prepareCreateRequest($orderId, $amount, $description, array $billingParams = [])
     {
@@ -47,7 +47,7 @@ class TelrManager
      * @param $amount
      * @param $description
      * @param array $billingParams
-     * @return \TelrGateway\TelrURL
+     * @return \Mubarakismail\TelrPayment\TelrURL
      * @throws \Exception
      */
     public function pay($orderId, $amount, $description, array $billingParams = [])

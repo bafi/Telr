@@ -1,20 +1,20 @@
 <?php
 
-namespace TelrGateway;
+namespace Mubarakismail\TelrPayment;
 
 use Illuminate\Contracts\Support\Arrayable;
 
 class TelrTransactionResultRequest extends AbstractTelrRequest implements Arrayable
 {
     /**
-     * @var \TelrGateway\Transaction
+     * @var \Mubarakismail\TelrPayment\Transaction
      */
     protected $transaction;
 
     /**
      * TelrTransactionResultRequest constructor.
      *
-     * @param \TelrGateway\Transaction $transaction
+     * @param \Mubarakismail\TelrPayment\Transaction $transaction
      */
     public function __construct(Transaction $transaction)
     {

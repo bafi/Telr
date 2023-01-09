@@ -1,12 +1,12 @@
 <?php
 
-namespace TelrGateway;
+namespace Mubarakismail\TelrPayment;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use TelrGateway\Events\TelrCreateRequestEvent;
-use TelrGateway\Events\TelrRecieveTransactionResponseEvent;
-use TelrGateway\Listeners\CreateTransactionListener;
-use TelrGateway\Listeners\SaveTransactionResponseListener;
+use Mubarakismail\TelrPayment\Events\TelrCreateRequestEvent;
+use Mubarakismail\TelrPayment\Events\TelrRecieveTransactionResponseEvent;
+use Mubarakismail\TelrPayment\Listeners\CreateTransactionListener;
+use Mubarakismail\TelrPayment\Listeners\SaveTransactionResponseListener;
 
 class EventServiceProvider extends ServiceProvider
 {

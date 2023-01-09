@@ -1,9 +1,9 @@
 <?php
 
-namespace TelrGateway\Listeners;
+namespace Mubarakismail\TelrPayment\Listeners;
 
-use TelrGateway\Events\TelrSuccessTransactionEvent;
-use TelrGateway\Events\TelrFailedTransactionEvent;
+use Mubarakismail\TelrPayment\Events\TelrSuccessTransactionEvent;
+use Mubarakismail\TelrPayment\Events\TelrFailedTransactionEvent;
 
 class SaveTransactionResponseListener
 {

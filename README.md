@@ -5,24 +5,25 @@
 You can install the package via composer:
 
 ``` bash
-composer require laravel_payment/telr
+composer require mubarakismail/telr_payment
 ```
 
-
-In Laravel starting from 5.5 the service provider will automatically get registered. In older versions of the framework just add the service provider in `config/app.php` file:
+In Laravel starting from 5.5 the service provider will automatically get registered. In older versions of the framework
+just add the service provider in `config/app.php` file:
 
 ```php
 'providers' => [
     // ...
-    TelrGateway\TelrServiceProvider::class,
+    Mubarakismail\TelrPayment\TelrServiceProvider::class,
 ];
 ```
 
 You can publish using the following provider
 
 ```bash
-php artisan vendor:publish --provider="TelrGateway\TelrServiceProvider"
+php artisan vendor:publish --provider="Mubarakismail\TelrPayment\TelrServiceProvider"
 ```
+
 After that you can create the telr transaction table by running the migrations command:
 
 ```bash
@@ -30,6 +31,7 @@ php artisan migrate
 ```
 
 When published, [the `config/telr.php` config file](#) contains:
+
 ```php
 return [
     // The current mode is live|production or test
@@ -63,7 +65,7 @@ return [
 After creating the route place the following code to redirect to bank page
 
 ```php
-$telrManager = new \TelrGateway\TelrManager();
+$telrManager = new \Mubarakismail\TelrPayment\TelrManager();
 
 $billingParams = [
         'first_name' => 'Moustafa Gouda',
@@ -80,10 +82,12 @@ $billingParams = [
 return $telrManager->pay('ORDER_ID_GOES_HERE', 'TOTAL_AMOUNT', 'DESCRIPTION ...', $billingParams)->redirect();
 
 ```
+
 > - note that if you want to avoid sending billing params while creating token to process the payment it's applicable and the `Telr hosted payment page` will require it and will get the customer information on**check**request.
 
 And on telr callback **(Success|Cancel|Declined)** to handle response put the following code:
+
 ```php
-$telrManager = new \TelrGateway\TelrManager();
+$telrManager = new \Mubarakismail\TelrPayment\TelrManager();
 $telrManager->handleTransactionResponse($request);
 ```
