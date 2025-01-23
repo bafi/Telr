@@ -20,11 +20,12 @@ class TelrManager
      * @param $amount
      * @param $description
      * @param array $billingParams
+     * @param $currency
      * @return \TelrGateway\CreateTelrRequest
      */
-    public function prepareCreateRequest($orderId, $amount, $description, array $billingParams = [])
+    public function prepareCreateRequest($orderId, $amount, $description, array $billingParams = [], $currency=null)
     {
-        $createTelrRequest = (new CreateTelrRequest($orderId, $amount))->setDesc($description);
+        $createTelrRequest = (new CreateTelrRequest($orderId, $amount, $currency))->setDesc($description);
 
         //Set Telr request lang
         $createTelrRequest->setLangCode(app()->getLocale());
@@ -47,12 +48,13 @@ class TelrManager
      * @param $amount
      * @param $description
      * @param array $billingParams
+     * @param $currency
      * @return \TelrGateway\TelrURL
      * @throws \Exception
      */
-    public function pay($orderId, $amount, $description, array $billingParams = [])
+    public function pay($orderId, $amount, $description, array $billingParams = [], $currency=null)
     {
-        $createRequest = $this->prepareCreateRequest($orderId, $amount, $description, $billingParams);
+        $createRequest = $this->prepareCreateRequest($orderId, $amount, $description, $billingParams, $currency);
         $result = $this->callTelrServer($createRequest->getEndPointURL(), $createRequest->toArray());
 
         // Validate if response has error messages

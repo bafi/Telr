@@ -14,12 +14,14 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
      *
      * @param $orderId
      * @param $amount
+     * @param $currency
      */
-    public function __construct($orderId, $amount)
+    public function __construct($orderId, $amount, $currency=null)
     {
         $this->setOrderId($orderId);
         $this->setAmount($amount);
         $this->setCartId(Uuid::uuid4()->toString().'-'.time());
+        $this->setCurrency($currency ?? config('telr.currency'));
     }
 
     /**
@@ -84,7 +86,7 @@ class CreateTelrRequest extends AbstractTelrRequest implements Arrayable
      */
     public function getCurrency()
     {
-        return data_get($this->data, 'ivp_currency', config('telr.currency'));
+        return data_get($this->data, 'ivp_currency');
     }
 
     /**
