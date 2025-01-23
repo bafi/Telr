@@ -76,8 +76,8 @@ $billingParams = [
         'country' => 'EG',
         'email' => 'example@company.com',
     ];
-
-return $telrManager->pay('ORDER_ID_GOES_HERE', 'TOTAL_AMOUNT', 'DESCRIPTION ...', $billingParams)->redirect();
+$currency = 'SAR'; //it is completely optional if this currency is not passed then the currency from config is taken
+return $telrManager->pay('ORDER_ID_GOES_HERE', 'TOTAL_AMOUNT', 'DESCRIPTION ...', $billingParams,$currency)->redirect();
 
 ```
 > - note that if you want to avoid sending billing params while creating token to process the payment it's applicable and the `Telr hosted payment page` will require it and will get the customer information on**check**request.
